@@ -1,0 +1,102 @@
+#include <iostream>
+using namespace std;
+
+class publication {
+    private:
+    string title;
+    float price;
+
+    public:
+    void getData ();
+    void Display ();
+};
+
+void publication :: getData () {
+    cout<<"Enter title of the book is: ";
+    cin>>title;
+    cout<<"Enter price of the book is: ";
+    cin>>price;
+}
+
+void publication :: Display () {
+    cout<<"The title of the book is: "<<title<<endl;
+    cout<<"The price of the book is: "<<price<<endl;
+}
+
+class Book: public publication {
+    private:
+    int pagecount;
+
+    public:
+    void insert ();
+    void show ();
+
+
+};
+
+void Book :: insert() {
+    getData();
+    cout<<"Enter total pages of the book: ";
+    cin>>pagecount;
+
+}
+
+void Book :: show () {
+    Display();
+    if (pagecount<=0) {
+        cout<<"Invalid pagecount: ";
+    }else {
+        cout<<"Total pages are: "<<pagecount<<endl;
+    }
+}
+
+
+class Tape :public publication {
+    private:
+    float minutes;
+
+    public:
+    void add();
+    void display();
+    
+};
+
+void Tape :: add () {
+    getData();
+    cout<<"Enter total playing time: ";
+    cin>>minutes;
+}
+
+void Tape :: display() {
+    Display (); 
+    cout<<"Total playing time in minutes is: "<<minutes;
+}
+
+int main () {
+    int ch;
+    Book b;
+    Tape t;
+
+    do{
+        cout<<" 1.Book  2.CD   3.exit() "<<endl;
+        cin>>ch;
+
+        switch(ch){
+            case 1 :
+            b.insert();
+            b.show();
+            break;
+
+            case 2 :
+            t.add();
+            t.display();
+            break;
+
+            case 3 :
+            exit(0);
+        }
+    }while(ch!=3);
+
+    return 0;
+    
+}
