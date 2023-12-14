@@ -1,0 +1,33 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    map<string, int> populationMap = {
+        {"Maharashtra", 7026357},
+        {"Rajasthan", 6578936},
+        {"Karnataka", 6678993},
+        {"Punjab", 5789032},
+        {"West Bengal", 6676291}
+    };
+
+    cout << "========Population of states in India==========\n";
+    cout << "\nSize of populationMap: " << populationMap.size() << "\n";
+
+    string state_name;
+    cout << "\nEnter name of the state: ";
+    cin >> state_name;
+
+    auto iter = populationMap.find(state_name);
+
+    if (iter != populationMap.end())
+        cout << state_name << "'s population is " << iter->second << "\n";
+    else
+        cout << "State not found in populationMap\n";
+
+    populationMap.clear();
+
+    return 0;
+}
